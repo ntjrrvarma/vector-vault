@@ -3,6 +3,7 @@ import google.generativeai as genai
 import chromadb
 from chromadb.utils import embedding_functions
 from dotenv import load_dotenv
+from pypdf import PdfReader
 
 # 1. Load Secrets
 load_dotenv()
@@ -81,6 +82,13 @@ def ask_brain(question):
     response = model.generate_content(prompt)
     
     return response.text
+
+def extract_text_from_pdf(pdf_file_path):
+    reader = PdfReader(pdf_file_path)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text() + "\n"
+    return text
 
 # --- Main Execution Block ---
 # --- Main Execution Block ---
