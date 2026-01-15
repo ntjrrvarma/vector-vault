@@ -1,1 +1,1 @@
-# vector-vault
+# VectorVault: AI-Powered Code Analysis Tool
